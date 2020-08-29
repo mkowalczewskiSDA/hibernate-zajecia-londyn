@@ -13,6 +13,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Country {
 
+  public Country(String name, String alias) {
+    this.name = name;
+    this.alias = alias;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "CO_ID")
