@@ -1,17 +1,31 @@
 package com.sda.model;
 
-import lombok.AllArgsConstructor;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Address {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column
   private int id;
+  @Column
   private String street;
+  @Column
   private String buildingNo;
+  @Column
   private String apartamentNo;
+  @Column
   private String city;
+  @Column
   private String postalCode;
 
 }

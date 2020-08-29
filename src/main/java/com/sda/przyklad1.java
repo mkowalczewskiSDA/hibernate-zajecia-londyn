@@ -1,14 +1,14 @@
 package com.sda;
 
 import com.sda.model.Address;
+import com.sda.util.HibernateUtil;
+import org.hibernate.Session;
 
 public class przyklad1 {
 
   public static void main(String[] args) {
-    //Address address = new Address(1,"a","a","a","a", "a");
-    Address address = new Address();
-
-    System.out.println(address.toString());
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    session.close();
   }
 
 }
