@@ -2,9 +2,12 @@ package com.sda.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,17 +18,20 @@ public class Address {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column
+  @Column(name = "ADD_ID")
   private int id;
-  @Column
+  @Column(name = "ADD_STREET")
   private String street;
-  @Column
+  @Column(name = "ADD_BUILDING_NO")
   private String buildingNo;
-  @Column
+  @Column(name = "ADD_APARTAMENT_NO")
   private String apartamentNo;
-  @Column
+  @Column(name = "ADD_CITY")
   private String city;
-  @Column
+  @Column(name = "ADD_POSTAL_CODE")
   private String postalCode;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "ADD_CO_ID", referencedColumnName = "CO_ID")
+  private Country country;
 
 }

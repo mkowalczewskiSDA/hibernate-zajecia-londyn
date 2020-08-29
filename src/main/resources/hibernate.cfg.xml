@@ -15,6 +15,7 @@
     <property name="hbm2ddl.auto">update</property>
 
     <mapping class="com.sda.model.Address"/>
+    <mapping class="com.sda.model.Country"/>
 
   </session-factory>
 </hibernate-configuration>
