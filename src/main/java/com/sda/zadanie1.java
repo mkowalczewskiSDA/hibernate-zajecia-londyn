@@ -27,6 +27,8 @@ public class zadanie1 {
     System.out.println(addressGenericDao.findById(2));
 
     countryGenericDao.insert(new Country("Irlandia", "IR"));
+    //countryGenericDao.delete(new Country(20));
+    countryGenericDao.update(new Country(19, "FI", "Finlandia" ));
 
   }
 

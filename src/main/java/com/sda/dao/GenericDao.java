@@ -14,18 +14,18 @@ public class GenericDao<T extends ModelClass> {
     this.classParameter = classParameter;
   }
 
-  void openSession() { session = HibernateUtil.getSessionFactory().openSession();
+  Session openSession() { return HibernateUtil.getSessionFactory().openSession();
   }
 
   public T findById(int id){
-    openSession();
+    Session session = openSession();
     T t = session.find(classParameter, id);
     session.close();
     return t;
   }
 
   public void insert(T t) {
-    openSession();
+    Session session = openSession();
     session.beginTransaction();
     session.persist(t);
     session.flush();
@@ -33,9 +33,19 @@ public class GenericDao<T extends ModelClass> {
   }
 
   public void delete(T t) {
-    openSession();
+    Session session = openSession();
     session.beginTransaction();
-    session.delete(t.getId());
+    session.delete(t);
+    session.flush();
+    session.close();
+  }
+
+  public void update(T t) {
+    Session session = openSession();
+    session.beginTransaction();
+    if (findById(t.getId()) != null) {
+      session.merge(t);
+    }
     session.flush();
     session.close();
   }
