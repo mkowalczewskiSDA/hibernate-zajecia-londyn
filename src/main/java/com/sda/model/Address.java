@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-public class Address {
+public class Address implements ModelClass {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

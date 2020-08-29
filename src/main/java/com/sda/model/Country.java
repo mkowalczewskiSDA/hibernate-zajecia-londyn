@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Country {
+public class Country implements ModelClass {
 
   public Country(String name, String alias) {
     this.name = name;

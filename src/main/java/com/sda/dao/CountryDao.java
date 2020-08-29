@@ -30,4 +30,13 @@ public class CountryDao {
     session.close();
   }
 
+  public void update (Country country) {
+    session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
+    if (findById(country.getId()) != null) {
+      session.merge(country);
+    }
+    session.flush();
+    session.close();
+  }
 }
