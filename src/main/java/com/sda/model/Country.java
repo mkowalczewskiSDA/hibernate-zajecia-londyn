@@ -18,6 +18,10 @@ public class Country {
     this.alias = alias;
   }
 
+  public Country(int id) {
+    this.id = id;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "CO_ID")

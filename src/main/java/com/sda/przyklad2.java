@@ -8,7 +8,9 @@ public class przyklad2 {
 
   public static void main(String[] args) {
     //usePersist();
-    useMerge();
+    //useMerge();
+    //useUpdate();
+    useDelete();
   }
 
   //persist() zawsze tworzy nowy obiekt
@@ -44,6 +46,29 @@ public class przyklad2 {
     newCountry.setName("Francja 2");
     session.flush();
     session.getTransaction().commit();
+    session.close();
+  }
+
+  public static void useUpdate(){
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
+    Country country = new Country();
+    country.setId(1);
+    country.setName("Japan");
+    country.setAlias("JP");
+    session.update(country);
+    country.setName("Japan 2");
+    session.flush();
+    session.close();
+  }
+
+  public static void useDelete(){
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
+    Country countryToBeDeleted = new Country();
+    countryToBeDeleted.setName("FR");
+    session.delete(countryToBeDeleted);
+    session.flush();
     session.close();
   }
 }

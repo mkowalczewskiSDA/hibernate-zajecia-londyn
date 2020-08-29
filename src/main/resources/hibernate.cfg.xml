@@ -16,6 +16,7 @@
 
     <mapping class="com.sda.model.Address"/>
     <mapping class="com.sda.model.Country"/>
+    <mapping class="com.sda.model.Placek"/>
 
   </session-factory>
 </hibernate-configuration>
