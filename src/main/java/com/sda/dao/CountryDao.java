@@ -2,6 +2,7 @@ package com.sda.dao;
 
 import com.sda.model.Country;
 import com.sda.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 
 public class CountryDao {
@@ -38,5 +39,13 @@ public class CountryDao {
     }
     session.flush();
     session.close();
+  }
+
+  public List<Country> getAll(){
+   return null;
+  }
+
+  public List<Country> getAllPaginated(){
+    return null;
   }
 }

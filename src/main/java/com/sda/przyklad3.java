@@ -13,7 +13,7 @@ public class przyklad3 {
   public static void main(String[] args) {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Query<Address> query = session.createQuery("select a from Address a where a.city=:city"
-        , Address.class).setParameter("city", "Londyn");
+        , Address.class).setParameter("city", "Londyn").;
     List<Address> list = query.getResultList();
     list.forEach(System.out::println);
     session.close();
