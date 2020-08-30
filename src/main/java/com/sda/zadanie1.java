@@ -34,6 +34,19 @@ public class zadanie1 {
     countryDao.getAllNames().forEach(System.out::println);
     countryDao.getGroupedBy().forEach(objects -> System.out.println(objects[0] + " "+ objects[1]));
 
+    int maxResult = 10;
+    int lastResults = maxResult;
+    int firstResult = 0;
+
+    int numberOfIterations = countryDao.getCount().intValue()/lastResults;
+    for (int i = 1; i<numberOfIterations; i++){
+      countryDao.getAllPaginated(firstResult, lastResults).forEach(System.out::println);
+      firstResult=lastResults+1;
+      lastResults = lastResults+maxResult;
+
+    }
+
+
 
   }
 

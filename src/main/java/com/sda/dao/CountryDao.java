@@ -66,7 +66,22 @@ public class CountryDao {
     return list;
   }
 
-  public List<Country> getAllPaginated(){
-    return null;
+  public List<Country> getAllPaginated(int firstResult, int maxResults){
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Query<Country> query = session.createQuery("Select c from Country c")
+        .setFirstResult(firstResult)
+        .setMaxResults(maxResults);
+    List<Country> list = query.getResultList();
+    session.close();
+    return list;
+  }
+
+  public Long getCount(){
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Query<Long> query = session.createQuery(
+        "Select count(c.id) from Country c");
+    Long count = query.getSingleResult();
+    session.close();
+    return count;
   }
 }
