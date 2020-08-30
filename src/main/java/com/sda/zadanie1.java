@@ -30,6 +30,11 @@ public class zadanie1 {
     //countryGenericDao.delete(new Country(20));
     countryGenericDao.update(new Country(19, "FI", "Finlandia" ));
 
+    countryDao.getAll().forEach(System.out::println);
+    countryDao.getAllNames().forEach(System.out::println);
+    countryDao.getGroupedBy().forEach(objects -> System.out.println(objects[0] + " "+ objects[1]));
+
+
   }
 
 }

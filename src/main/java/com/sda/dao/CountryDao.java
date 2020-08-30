@@ -4,6 +4,7 @@ import com.sda.model.Country;
 import com.sda.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 public class CountryDao {
   Session session;
@@ -42,7 +43,27 @@ public class CountryDao {
   }
 
   public List<Country> getAll(){
-   return null;
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Query<Country> query = session.createQuery("Select c from Country c");
+    List<Country> list = query.getResultList();
+    session.close();
+    return list;
+  }
+
+  public List<String> getAllNames(){
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Query<String> query = session.createQuery("Select c.name from Country c");
+    List<String> list = query.getResultList();
+    session.close();
+    return list;
+  }
+
+  public List<Object[]> getGroupedBy(){
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Query<Object[]> query = session.createQuery("Select max(c.id), c.name from Country c group by c.name");
+    List<Object[]> list = query.getResultList();
+    session.close();
+    return list;
   }
 
   public List<Country> getAllPaginated(){

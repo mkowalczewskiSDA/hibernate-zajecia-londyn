@@ -7,10 +7,10 @@ import org.hibernate.Session;
 public class przyklad2 {
 
   public static void main(String[] args) {
-    //usePersist();
-    //useMerge();
+    usePersist();
+    useMerge();
     //useUpdate();
-    useDelete();
+    //useDelete();
   }
 
   //persist() zawsze tworzy nowy obiekt
