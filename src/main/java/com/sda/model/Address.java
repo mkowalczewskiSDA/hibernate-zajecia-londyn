@@ -1,5 +1,6 @@
 package com.sda.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,11 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode(exclude = "country")
+@ToString(exclude = "country")
 public class Address implements ModelClass {
 
   public Address(String street, String buildingNo, String apartamentNo, String city,
@@ -41,7 +46,7 @@ public class Address implements ModelClass {
   private String city;
   @Column(name = "ADD_POSTAL_CODE")
   private String postalCode;
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "ADD_CO_ID", referencedColumnName = "CO_ID")
   private Country country;
 
