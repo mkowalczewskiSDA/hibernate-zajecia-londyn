@@ -22,6 +22,12 @@ import lombok.Data;
 @Data
 public class Order implements ModelClass {
 
+  public Order(LocalDateTime orderDate, BigDecimal orderPrice, User user) {
+    this.orderDate = orderDate;
+    this.orderPrice = orderPrice;
+    this.user = user;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ORD_ID")

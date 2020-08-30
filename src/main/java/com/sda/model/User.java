@@ -36,6 +36,16 @@ public class User implements ModelClass {
   @Transient
   private String fullName;
 
+  public User(String firstName, String lastName, String password, String email,
+      Address address, LocalDate birthDate) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.password = password;
+    this.email = email;
+    this.address = address;
+    this.birthDate = birthDate;
+  }
+
   public String getFullName(){
     return firstName+" "+lastName;
   }
