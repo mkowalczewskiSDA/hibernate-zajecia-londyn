@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Address implements ModelClass {
+
+  public Address(String street, String buildingNo, String apartamentNo, String city,
+      String postalCode, Country country) {
+    this.street = street;
+    this.buildingNo = buildingNo;
+    this.apartamentNo = apartamentNo;
+    this.city = city;
+    this.postalCode = postalCode;
+    this.country = country;
+  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
