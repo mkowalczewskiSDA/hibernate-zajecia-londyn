@@ -18,7 +18,7 @@ public class GenericDao<T extends ModelClass> {
   }
 
   public T findById(int id){
-    Session session = openSession();
+    Session session = HibernateUtil.getSessionFactory().openSession();
     T t = session.find(classParameter, id);
     session.close();
     return t;

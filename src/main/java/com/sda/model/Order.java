@@ -16,10 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "`Order`")
 @Data
+@NoArgsConstructor
+@ToString(exclude = {"user", "products"})
 public class Order implements ModelClass {
 
   public Order(LocalDateTime orderDate, BigDecimal orderPrice, User user) {
