@@ -1,5 +1,6 @@
 package com.sda.model;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +16,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @NamedQueries({
     @NamedQuery(name = "country.select", query = "Select c from Country c where c.name=:name"),
     @NamedQuery(name = "country.selectByAlias", query = "Select c from Country c where c.alias=:alias")
 })
-
 public class Country implements ModelClass {
 
   public Country(String name, String alias) {
@@ -29,6 +30,12 @@ public class Country implements ModelClass {
 
   public Country(int id) {
     this.id = id;
+  }
+
+  public Country(int id, String name, String alias) {
+    this.id = id;
+    this.name = name;
+    this.alias = alias;
   }
 
   @Id

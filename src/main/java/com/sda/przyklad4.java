@@ -12,7 +12,7 @@ public class przyklad4 {
     NativeQuery<Country> nativeQuery = session.createNativeQuery(
         "Select * from Country where co_id > :id",
         Country.class
-    ).setParameter("id", 70);
+    ).setParameter("id", 1);
     nativeQuery.getResultList().forEach(System.out::println);
     session.close();
   }
